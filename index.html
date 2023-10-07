@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    
+        <div class="valid">
+            <p class="vl2">Validador de CPF</p>
+            <form action="">
+               
+                <label class="val" for="">Digite seu CPF
+                    <input class="va1" type="text" name="" id="cpf" placeholder="  Apenas Números"maxlength="11">
+                    <input class="btn" type="button" value="Validar" onclick="validar()"/>
+                    <p id="resultado"></p>
+                </label>
+            </form>
+        </div>    
+    
+    
+    <script >
+        function validar(){
+    const cpf= document.getElementById("cpf");
+    const resultado = document.getElementById("resultado")
+    //verificar se a caixa esta vazia
+    // o comando trim() elemina os espaços desnecessarios    
+    if(cpf.value.trim() == ""){
+        return resultado.innerHTML = "Digite o CPF"
+    }
+    else if(cpf.value.length < 11){
+        return resultado.innerHTML = "CPF incompleto"
+    }
+    else{
+        // criar uma variavel para guardar os 9 primeiros digitos
+        let cpfCalc = cpf.value.substring(0,9); 
+        let p10 = 10
+        let p11 = 11
+        let resto = 0
+        let rs = 0
+
+        for( let i = 0 ; i< 9 ; i++){
+            rs += cpfCalc[i] * p10
+            p10--;
+        }
+        resto = rs % 11
+        if (resto <2){
+            cpfCalc += "0"
+        }
+        else{
+            cpfCalc +=""+11-resto
+        }
+
+        // zerar a variavel rs para o novo calculo
+
+        rs = 0
+        for( let i = 0 ; i< 10 ; i++){
+            rs += cpfCalc[i] * p11
+            p11--;
+        }
+        resto = rs % 11
+        if (resto <2){
+            cpfCalc += "0"
+        }
+        else{
+            cpfCalc +=""+11-resto
+        }
+        if(cpf.value == cpfCalc){
+        resultado.innerHTML = "CPF VALIDO";
+        }
+        else{
+            resultado.innerHTML = "CPF INVALIDO"
+        }
+    }
+}
+    </script>
+</body>
+
+<style>
+.valid{
+    background-color:#3782ba;
+    width: 50%;
+    height: 500px;
+    margin-top: 10%;
+    margin-left: 25%;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    
+   
+   
+}  
+.val{
+    
+    font-size: 20px;
+
+    
+} 
+.va1{
+    margin-top: 5%;
+    text-align: center;
+    border-radius: 10px;
+    height: 30px;
+    width:50%;
+    
+}
+#resultado{
+    color: rgb(104, 14, 14);
+    text-align: center;
+    text-decoration: none;
+} 
+.vl2{
+    padding-top: 10%;
+    font-size: 30px;
+    text-align: center;
+}    
+.btn{
+    height: 33px;
+    width: 10%;
+    border-radius: 5px;
+}
+</style>
+</html>
