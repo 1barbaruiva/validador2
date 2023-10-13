@@ -8,128 +8,300 @@
    
 </head>
 <body>
-     
+      <div class="conteiner">
     
-        <div class="valid">
-            <p class="vl2">Validador de CPF</p>
-            <form action="">
-               
-                <label class="val" for="">Digite seu CPF
-                    <input class="va1" type="text" name="" id="cpf" placeholder="  Apenas Números"maxlength="11">
-                    <input class="btn" type="button" value="Validar" onclick="validar()"/>
-                    <p id="resultado"></p>
-                </label>
-            </form>
-        </div>    
-    
-    
-    <script >
-        function validar(){
-    const cpf= document.getElementById("cpf");
-    const resultado = document.getElementById("resultado")
-    //verificar se a caixa esta vazia
-    // o comando trim() elemina os espaços desnecessarios    
-    if(cpf.value.trim() == ""){
-        return resultado.innerHTML = "Digite o CPF"
-    }
-    else if(cpf.value.length < 11){
-        return resultado.innerHTML = "CPF incompleto"
-    }
-    else{
-        // criar uma variavel para guardar os 9 primeiros digitos
-        let cpfCalc = cpf.value.substring(0,9); 
-        let p10 = 10
-        let p11 = 11
-        let resto = 0
-        let rs = 0
+                    <div class="valid">
+                        <p class="vl2">Validador de CPF</p>
+                        <form action="">
+                        
+                            <label class="val" for=""> Digite seu CPF
+                                <input class="va1" type="text" name="" id="cpf" placeholder="Apenas Números"maxlength="11">
+                                <input class="btn" type="button" value="Validar" onclick="validar()"/>
+                                <p id="resultado"></p>
+                            </label>
+                        </form>
+                    </div>    
+                
+                
+                <script >
+                    function validar(){
+                const cpf= document.getElementById("cpf");
+                const resultado = document.getElementById("resultado")
+                //verificar se a caixa esta vazia
+                // o comando trim() elemina os espaços desnecessarios    
+                if(cpf.value.trim() == ""){
+                    return resultado.innerHTML = "Digite o CPF"
+                }
+                else if(cpf.value.length < 11){
+                    return resultado.innerHTML = "CPF incompleto"
+                }
+                else{
+                    // criar uma variavel para guardar os 9 primeiros digitos
+                    let cpfCalc = cpf.value.substring(0,9); 
+                    let p10 = 10
+                    let p11 = 11
+                    let resto = 0
+                    let rs = 0
 
-        for( let i = 0 ; i< 9 ; i++){
-            rs += cpfCalc[i] * p10
-            p10--;
-        }
-        resto = rs % 11
-        if (resto <2){
-            cpfCalc += "0"
-        }
-        else{
-            cpfCalc +=""+11-resto
-        }
+                    for( let i = 0 ; i< 9 ; i++){
+                        rs += cpfCalc[i] * p10
+                        p10--;
+                    }
+                    resto = rs % 11
+                    if (resto <2){
+                        cpfCalc += "0"
+                    }
+                    else{
+                        cpfCalc +=""+11-resto
+                    }
 
-        // zerar a variavel rs para o novo calculo
+                    // zerar a variavel rs para o novo calculo
 
-        rs = 0
-        for( let i = 0 ; i< 10 ; i++){
-            rs += cpfCalc[i] * p11
-            p11--;
-        }
-        resto = rs % 11
-        if (resto <2){
-            cpfCalc += "0"
-        }
-        else{
-            cpfCalc +=""+11-resto
-        }
-        if(cpf.value == cpfCalc){
-        resultado.innerHTML = "CPF VÁLIDO";
-        }
-        else{
-            resultado.innerHTML = "CPF INVÁLIDO"
-        }
-    }
-}
-    </script>
+                    rs = 0
+                    for( let i = 0 ; i< 10 ; i++){
+                        rs += cpfCalc[i] * p11
+                        p11--;
+                    }
+                    resto = rs % 11
+                    if (resto <2){
+                        cpfCalc += "0"
+                    }
+                    else{
+                        cpfCalc +=""+11-resto
+                    }
+                    if(cpf.value == cpfCalc){
+                    resultado.innerHTML = "CPF VÁLIDO";
+                    }
+                    else{
+                        resultado.innerHTML = "CPF INVÁLIDO"
+                    }
+                }
+            }
+                </script>
+
+        </div>  
 </body>
 
 <style>
-     @media screen and (min-width:375px){
-            body{
-                width: 100%;
+
+    /* Incio da resolução 768px */
+
+       @media screen and (min-width:768px){
+        .valid{
+                width:100%;
+                height:920px;
+                background: rgb(42, 28, 165);
+                margin: -1px;
+                padding: -1px;
+               
+            }
+                
+        }
+        @media screen and (min-width:768px){
+            .val{
+                color: rgb(201, 54, 54);
+                font-size: 40px;
             }
         }
-        @media screen and (min-width:1200px){
-            body{
-                width: 90%;
+
+
+        @media screen and (min-width:768px){
+            .btn{
+                width:40%;
+                height: 35px;
+                margin: 15px;
+                text-align: center;
+                margin-left: 20px;
+                font-weight: bold;
+                font-size: 15px;
             }
+        }
+
+        @media screen and (min-width:768px) {
+            .va1{
+                width: 50%;
+                height: 50px;
+                font-weight: 900;
+                font-size: 15px;
+            }
+            
+        }
+        
+        @media screen and (min-width:768px){
+            .vl2{
+                padding-top: 10%;
+                font-size: 30px;
+                text-align: center;
+                margin-left: 200px;
+                font-weight: bolder;
+                color: aliceblue;
+            }
+        }
+
+        /* Fim da resolução 768px */
+
+
+
+        /* Inicio da resolução 300px */
+
+        @media screen and (min-width:300px){
+        .valid{
+                width:100%;
+                height:920px;
+                background:#4B086d;
+                margin: -1px;
+                padding: -1px;
+                padding-top:50px;
+               
+            }
+                
+        }
+        @media screen and (min-width:300px){
+            .val{
+                color: rgb(247, 244, 244);
+                font-size: 40px;
+            }
+        }
+
+
+        @media screen and (min-width:300px){
+            .btn{
+                width:40%;
+                height: 35px;
+                margin: 15px;
+                text-align: center;
+                margin-left: 20px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+        }
+
+        @media screen and (min-width:300px) {
+            .va1{
+                width: 50%;
+                height: 50px;
+                font-weight: 900;
+                font-size: 15px;
+            }
+            
+        }
+        @media screen and (min-width:300px){
+            .vl2{
+                padding-top: 10%;
+                font-size: 30px;
+                text-align: center;
+                margin-left: 10px;
+                font-weight: bolder;
+                color: aliceblue;
+            }
+        }
+
+        /* Fim da resolução 300px */
+
+        /* Resolução 1200 px */
+
+
+        
+        @media screen and (min-width:1200px){
+        .valid{
+                width:100%;
+                height:920px;
+                background: #0c7bb3;
+                margin: -1px;
+                padding: -1px;
+               
+            }
+                
+        }
+        @media screen and (min-width:1200px){
+            .val{
+                width: 90%;
+                color: black;
+                font-size: 40px;
+            }
+        }
+
+
+        @media screen and (min-width:1200px){
+            .btn{
+                width:40%;
+                height: 35px;
+                margin: 15px;
+                text-align: center;
+                margin-left: 200px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+        }
+
+        @media screen and (min-width:1200px) {
+            .va1{
+                
+                height: 50px;
+                font-weight: 900;
+                font-size: 15px;
+              
+            }
+
+
+            
+        }
+
+        @media screen and (min-width:1200px){
+            .vl2{
+                padding-top: 10%;
+                font-size: 30px;
+                text-align: center;
+                margin-left: 200px;
+                font-weight: bolder;
+                color: aliceblue;
+            }
+        }
+        @media screen and (min-width:1200px) {
+            #resultado{
+                width: 80%;
+                height: 50px;
+                font-weight: 900;
+                margin-left: 290px;
+                
+              
+            }
+            
+        }
+
+         /* Fim da resolução 1200px */
+
+        
+
+       
+
+
+
 .valid{
-    background-color:#3782ba;
-    width: 50%;
-    height: 500px;
-    margin-top: 10%;
-    margin-left: 25%;
-    color: aliceblue;
+    
+    width: 100%;
+    color: rgb(194, 41, 125);
     border-radius: 15px;
     text-align: center;
     
    
    
 }  
-.val{
-    
-    font-size: 20px;
 
-    
-} 
 .va1{
     margin-top: 5%;
     text-align: center;
     border-radius: 10px;
-    height: 30px;
-    width:50%;
+   
     
 }
-#resultado{
-    color: rgb(104, 14, 14);
-    text-align: center;
-    text-decoration: none;
-} 
+
 .vl2{
-    padding-top: 10%;
-    font-size: 30px;
-    text-align: center;
+   
 }    
 .btn{
-    height: 33px;
-    width: 10%;
+    
+    
     border-radius: 5px;
 }
 </style>
